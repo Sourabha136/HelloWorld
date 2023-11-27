@@ -3,7 +3,7 @@ name: Terraform Automation
 on:
   workflow_dispatch:  # Manual trigger
   push:
-   branches: [main]
+   branches: [terraform-script]
     
  
 jobs:
