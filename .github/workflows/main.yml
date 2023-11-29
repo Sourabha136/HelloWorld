@@ -33,10 +33,10 @@ jobs:
         run: terraform init --var-file=dev.tfvars
  
       - name: Terraform Plan
-        run: terraform plan --var-file=dev.tfvars
+        run: terraform plan -
  
       - name: Terraform Apply
-        run: terraform apply --var-file=dev.tfvars -auto-approve
+        run: terraform apply 
  
       - name: Clean up
         run: terraform destroy --var-file=dev.tfvars -auto-approve
