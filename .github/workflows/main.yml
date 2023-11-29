@@ -33,7 +33,7 @@ jobs:
         run: terraform init --var-file=dev.tfvars
  
       - name: Terraform Plan
-        run: terraform plan -
+        run: terraform plan 
  
       - name: Terraform Apply
         run: terraform apply 
