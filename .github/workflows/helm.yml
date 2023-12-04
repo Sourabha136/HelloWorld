@@ -1,0 +1,31 @@
+name: Install Helm Chart
+
+on:
+  push:
+    branches:
+      - main  # Change this to your desired branch
+
+jobs:
+  install:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+      
+    - name: Install Helm
+      uses: azure/setup-helm@v1
+      with:
+        version: 'v3.7.0'  # Specify the Helm version you want to use
+      
+    - name: Configure kubectl
+      uses: azure/kubectl@v1
+      with:
+        version: 'latest'
+      env:
+        KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}  # Add your Kubernetes configuration as a secret
+        
+    - name: Helm Install
+      run: |
+        helm repo add stable https://charts.helm.sh/stable
+        helm install my-release stable/chart-name
